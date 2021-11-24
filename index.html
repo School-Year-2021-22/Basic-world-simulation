@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  
+  <div class="app">
+    <div v-if="phase == 0">
+      <label for="">Size of the world</label>
+      <select name="" id="" v-model="cellAmount">
+        <option value="20">Small</option>
+        <option value="50">Medium</option>
+        <option value="100">Large</option>
+      </select>
+      <label for="">Amount Of enemies</label>
+      <input type="number" v-model="enemiesAmount">
+      <button @click="startGame()">Start</button>
+    </div>
+
+    <div v-if="phase == 1">
+        <div class="world">
+          <div v-for="line,i of lines" :key="i" class="world-row">
+            <div v-for="cell,i of cells" :key="i" class="world-cell">
+            </div>  
+          </div>
+          <hr>
+          <div
+            class="enemy" v-for="enemy,j of enemies" :key="j"
+            :style="{
+              left: enemy.x * 20 + 'px',
+              top: enemy.y * 20 + 'px',
+            }"
+            >
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="script.js"></script>
+</body>
+</html>
