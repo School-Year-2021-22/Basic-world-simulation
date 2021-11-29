@@ -63,16 +63,16 @@ const app = {
     },
     keyEvents(e){
       console.log(e.keyCode)
-      if (e.keyCode == 65){
+      if (w.keyCode == 65){
         this.character.y++
       }
-      if (e.keyCode == 83){
+      if (a.keyCode == 83){
         this.character.x--
       }
-      if (e.keyCode == 68){
+      if (s.keyCode == 68){
         this.character.y--
       }
-      if (e.keyCode == 87){
+      if (d.keyCode == 87){
         this.character.x++
       }
 
