@@ -30,6 +30,15 @@
             </div>  
           </div>
           <hr>
+
+          <div
+            class="character"
+            :style="{
+              left: character.x * 20 + 'px',
+              top: character.y * 20 + 'px',
+            }"
+            >
+          </div>
           <div
             class="enemy" v-for="enemy,j of enemies" :key="j"
             :style="{

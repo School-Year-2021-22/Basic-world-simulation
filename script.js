@@ -28,6 +28,7 @@ const app = {
         const enemy = {
           x: parseInt(Math.random() * this.cellAmount),
           y: parseInt(Math.random() * this.cellAmount),
+          
         }
         j++;
         this.enemies.push(enemy)
@@ -38,26 +39,47 @@ const app = {
     time() {
       let i = 0
       while(i < this.enemies.length){
+        const sx = this.enemies[i].x;
+        const sy = this.enemies[i].y;
+        const tx = this.character.x;
+        const ty = this.character.y;
+
         const r = Math.random()
-        if (r > .5){
-          const d = Math.random()
-          if (d > .5){
-            this.enemies[i].x++
-          }else{
-            this.enemies[i].y--
-          }
-        }else{
-          const d = Math.random()
-          if (d > .5){
-            this.enemies[i].x--
-          }else{
-            this.enemies[i].x++
-          }
+
+        if ( sx < tx  && r < 0.5 ){
+          this.enemies[i].x++
+        }
+        if (sy< ty && r > 0.5){
+          this.enemies[i].y++
+        }
+        if (sy > ty && r > 0.5){
+          this.enemies[i].y--
+        }
+        if (sx > tx && r < 0.5){
+          this.enemies[i].x--
         }
         i++;
       }
+    },
+    keyEvents(e){
+      console.log(e.keyCode)
+      if (e.keyCode == 65){
+        this.character.y++
+      }
+      if (e.keyCode == 83){
+        this.character.x--
+      }
+      if (e.keyCode == 68){
+        this.character.y--
+      }
+      if (e.keyCode == 87){
+        this.character.x++
+      }
 
     }
+  },
+  mounted() {
+    window.onkeydown = this.keyEvents
   }
 }
 
